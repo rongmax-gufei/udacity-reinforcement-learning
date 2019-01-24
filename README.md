@@ -1,6 +1,5 @@
+# Udacity Machine Learning Nanodegree
 ## 1. 问题描述
-
-
 ![img.png](default.png)
 
 在该项目中，你将使用强化学习算法，实现一个自动走迷宫机器人。

@@ -53,7 +53,6 @@ class Robot(object):
         """
         Get the current state of the robot. In this
         """
-
         # TODO 3. Return robot's current state
         return self.maze.sense_robot()
 
@@ -66,11 +65,8 @@ class Robot(object):
         # Qtable[state] ={'u':xx, 'd':xx, ...}
         # If Qtable[state] already exits, then do
         # not change it.
-        if state in self.Qtable:
-            pass
-        else:
-            self.Qtable[state] = {'u':0.0, 'r':0.0, 'd':0.0, 'l':0.0}
-
+        self.Qtable.setdefault(state, {a: 0.0 for a in self.valid_actions})
+        
     def choose_action(self):
         """
         Return an action according to given rules
@@ -85,24 +81,22 @@ class Robot(object):
         if self.learning:
             if is_random_exploration():
                 # TODO 6. Return random choose aciton
-                self.action = random.choice(self.valid_actions)
+                return random.choice(self.valid_actions)
             else:
                 # TODO 7. Return action with highest q value
-                self.action = max(self.Qtable[self.state], key=self.Qtable[self.state].get)
+                return max(self.Qtable[self.state], key=self.Qtable[self.state].get)
         elif self.testing:
             # TODO 7. choose action with highest q value
-            self.action = max(self.Qtable[self.state], key=self.Qtable[self.state].get)
+            return max(self.Qtable[self.state], key=self.Qtable[self.state].get)
         else:
             # TODO 6. Return random choose aciton
-            self.action = random.choice(self.valid_actions)
-        return self.action
+            return random.choice(self.valid_actions)
     
     def update_Qtable(self, r, action, next_state):
         """
         Update the qtable according to the given rule.
         """
         if self.learning:
-            pass
             # TODO 8. When learning, update the q table according
             # to the given rules
             self.Qtable[self.state][action] += self.alpha * (r + self.gamma * float(max(self.Qtable[next_state].values())) - self.Qtable[self.state][action])

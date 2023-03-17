@@ -1,5 +1,6 @@
 # Udacity Machine Learning Nanodegree
 - 广告：Udacity课程优惠券：邀请码: 67D6DA2E，立减 300 元
+- 科学上网：https://yoga.codepay.online/auth/register?code=0a73e30131 每日签到，没费赠送流量
 ## 1. 问题描述
 ![img.png](default.png)
 
